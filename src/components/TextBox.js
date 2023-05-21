@@ -30,6 +30,11 @@ export default function TextBox(props) {
     props.showAlert("Succesfully cleared all the extra spaces!", "success");
   }
 
+  function handleTweet(){
+    var tweetPost=`https://twitter.com/intent/tweet?text=${text}`;
+    window.open(tweetPost);
+  }
+
   function handleClear() {
     var newText = "";
     setText(newText);
@@ -99,6 +104,16 @@ export default function TextBox(props) {
             onClick={handleExtraSpaces}
           >
             Remove extra spaces
+          </button>
+          <button
+            disabled={text.length === 0}
+            type="button"
+            className={`btn btn-${
+              props.mode === "light" ? "dark" : "secondary"
+            } btn-sm mx-1 my-1`}
+            onClick={handleTweet}
+          >
+            Tweet
           </button>
           <button
             disabled={text.length === 0}
